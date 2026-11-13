@@ -1,0 +1,16 @@
+@{
+    int pageNumber = ViewBag.PageNumber ?? 1;
+    int totalPages = ViewBag.TotalPages ?? 1;
+    string? searchString = ViewBag.SearchString;
+}
+
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        @for (int i = 1; i <= totalPages; i++)
+        {
+            <li class="page-item @(i == pageNumber ? "active" : "")">
+                <a class="page-link" asp-action="Index" asp-route-pageNumber="@i" asp-route-searchString="@searchString">@i</a>
+            </li>
+        }
+    </ul>
+</nav>
